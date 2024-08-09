@@ -17,5 +17,193 @@ const user = {
     console.log(information);
   }
   
-// 2 Завдання
 
+// 2 Завдання
+const testObj = {
+  one: 1,
+
+  two: 2,
+
+  three: 3,
+
+  four: 4,
+};
+
+const countProps = (obj) => {
+  const objProperties = Object.keys(obj);
+  return objProperties.length;
+};
+
+console.log(countProps(testObj));
+
+
+// 3 Завдання
+
+const employees = {
+  employeesOne: 18,
+  employeesTwo: 11,
+  employeesThree: 15,
+  employeesFour: 21,
+};
+
+const findBestEmployee = (employees) => {
+  let bestEmployee = "";
+  let maxTasks = 0;
+
+  for (const name in employees) {
+    if (employees[name] > maxTasks) {
+      maxTasks = employees[name];
+      bestEmployee = name;
+    }
+  }
+
+  return bestEmployee;
+};
+
+const logFindBestEmployee = findBestEmployee(employees);
+
+console.log(logFindBestEmployee); 
+
+// 4 Завдання 
+
+const employeesSallary = {
+  employeesOne: "28000 гривень",
+  employeesTwo: "21000 гривень",
+  employeesThree: "27000 гривень",
+  employeesFour: "35000 гривень",
+};
+
+const countTotalSalary = (salaryEmployees) => {
+  let totalSalary = 0;
+
+  for (let salaryWorker in salaryEmployees) {
+    let numberSalary = parseInt(salaryEmployees[salaryWorker]);
+    totalSalary += numberSalary;
+  }
+
+  const totalNumberOfSalaryString = `${totalSalary} грн`;
+
+  console.log(totalNumberOfSalaryString);
+};
+
+countTotalSalary(employeesSallary);
+
+
+// 5 Завдання
+
+const objects = [
+  {
+    keyOne: "One One One",
+    keyTwo: "Two Two Two",
+    keyThree: "Three Three Three",
+  },
+  {
+    keyOne: "One One One",
+    keyTwo: "Two Two Two",
+    keyThree: "Three Three Three",
+  },
+  {
+    keyOne: "One One One",
+    keyTwo: "Two Two Two",
+    keyThree: "Three Three Three",
+  },
+];
+
+const getAllPropValues = (arr, prop) => {
+  let values = [];
+
+  for (let object of arr) {
+      values.push(object[prop]);
+  }
+
+  console.log(values);
+}
+
+getAllPropValues(objects, ["keyOne"]);
+
+
+// 6 Завданя
+
+const products = [
+  { 
+    name: "Apple", 
+    price: 2, 
+    quantity: 10 
+  },
+
+  { 
+    name: "Banana", 
+    price: 1, 
+    quantity: 5 
+  },
+
+  { 
+    name: "Lemon", 
+    price: 2, 
+    quantity: 3
+  },
+
+  { 
+    name: "Orange", 
+    price: 3, 
+    quantity: 7 
+  },
+];
+
+const calculateTotalPrice = (allProducts, productName) => {
+  let totalPrice = 0;
+  
+  for (let product of allProducts) {
+    if (product.name === productName) {
+      totalPrice += product.price * product.quantity;
+    }
+  }
+  
+  return totalPrice;
+};
+
+
+console.log(calculateTotalPrice(products, "Apple")); 
+console.log(calculateTotalPrice(products, "Banana")); 
+console.log(calculateTotalPrice(products, "Lemon")); 
+console.log(calculateTotalPrice(products, "Orange")); 
+
+
+// 7 Завдання
+
+const account = {
+  balance: 0,
+  transactions: [],
+
+  deposit(amount) {
+    if (amount > 0) {
+      this.balance += amount;
+      this.transactions.push(`Deposit: ${amount} гривень`);
+    }
+  },
+
+  withdraw(amount) {
+    if (amount > 0 && amount <= this.balance) {
+      this.balance -= amount;
+      this.transactions.push(`Withdraw: ${amount} гривень`);
+    }
+  },
+
+  getBalance() {
+    return this.balance;
+  },
+
+  getTransactionHistory() {
+    return this.transactions.length ? this.transactions : "Транзакцій ще немає";
+  }
+};
+
+console.log("Initial Balance:", account.getBalance()); 
+
+account.deposit(500); 
+
+account.withdraw(200); 
+
+console.log("Current Balance:", account.getBalance()); 
+
+console.log("Історія транзакцій:", account.getTransactionHistory()); 
